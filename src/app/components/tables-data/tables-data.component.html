@@ -1,0 +1,46 @@
+<main id="main" class="main">
+   <div class="pagetitle d-flex justify-content-between">
+      <div>
+         <h1>Staff list</h1>
+         <nav>
+            <ol class="breadcrumb">
+               <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+               <li class="breadcrumb-item">Staff</li>
+               <li class="breadcrumb-item active">List</li>
+            </ol>
+         </nav>
+      </div>
+      <div>
+         <nz-input-group nzSearch nzSize="large" [nzAddOnAfter]="suffixButton">
+            <input type="text" nz-input placeholder="input search text" />
+         </nz-input-group>
+         <ng-template #suffixButton>
+            <button nz-button nzType="primary" nzSize="large" nzSearch>Search</button>
+         </ng-template>
+      </div>
+   </div>
+   <section class="section">
+      <nz-table #basicTable [nzData]="listOfData">
+         <thead>
+            <tr>
+               <th>Name</th>
+               <th>Age</th>
+               <th>Address</th>
+               <th>Action</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr (click)="detail()" style="cursor: pointer;" *ngFor="let data of basicTable.data">
+               <td>{{ data.name }}</td>
+               <td>{{ data.age }}</td>
+               <td>{{ data.address }}</td>
+               <td>
+                  <a>Action 一 {{ data.name }}</a>
+                  <nz-divider nzType="vertical"></nz-divider>
+                  <button nz-button nzType="primary" nzDanger>Delete</button>
+               </td>
+            </tr>
+         </tbody>
+      </nz-table>
+   </section>
+</main>
